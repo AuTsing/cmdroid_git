@@ -12,6 +12,10 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
+            - name: Install cross compilation toolchain
+              run: |
+                  rustup target add aarch64-linux-androidS
+
             - name: Build
               run: cargo build --target aarch64-linux-android --release
 
