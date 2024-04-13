@@ -14,7 +14,7 @@ jobs:
 
             - name: Install cross compilation toolchain
               run: |
-                  rustup target add aarch64-linux-androidS
+                  rustup target add aarch64-linux-android
 
             - name: Build
               run: cargo build --target aarch64-linux-android --release
