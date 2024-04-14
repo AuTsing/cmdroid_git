@@ -12,6 +12,16 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
+            - name: Install ndk
+              id: install-ndk
+              uses: nttld/setup-ndk@v1
+              with:
+                  ndk-version: r26d
+
+            - name: Cat ndk
+              run: |
+                  echo ${{ steps.install-ndk.outputs.ndk-path }}
+
             - name: Install cross compilation toolchain
               run: |
                   rustup target add aarch64-linux-android
