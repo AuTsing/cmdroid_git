@@ -31,3 +31,8 @@ jobs:
                   CC_aarch64_linux_android: ${{ steps.install-ndk.outputs.ndk-path }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android28-clang
                   AR_aarch64_linux_android: ${{ steps.install-ndk.outputs.ndk-path }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
                   RANLIB_aarch64-linux-android: ${{ steps.install-ndk.outputs.ndk-path }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ranlib
+
+            - name: Release
+              uses: softprops/action-gh-release@v2
+              with:
+                  files: ./target/aarch64-linux-android/release/cmdroid_git
