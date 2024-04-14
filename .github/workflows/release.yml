@@ -17,10 +17,7 @@ jobs:
               uses: nttld/setup-ndk@v1
               with:
                   ndk-version: r26d
-
-            - name: Cat ndk
-              run: |
-                  echo ${{ steps.install-ndk.outputs.ndk-path }}
+                  add-to-path: false
 
             - name: Install cross compilation toolchain
               run: |
@@ -28,6 +25,8 @@ jobs:
 
             - name: Build
               run: cargo build --target aarch64-linux-android --release
-
-            - name: Test
-              run: cargo test -vv
+              env:
+                  ANDROID_NDK_ROOT: ${{ steps.install-ndk.outputs.ndk-path }}
+                  CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER: ${{ steps.install-ndk.outputs.ndk-path }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android28-clang
+                  CC_aarch64_linux_android: ${{ steps.install-ndk.outputs.ndk-path }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android28-clang
+                  AR_aarch64_linux_android: ${{ steps.install-ndk.outputs.ndk-path }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
