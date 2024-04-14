@@ -16,6 +16,10 @@ jobs:
               run: |
                   rustup target add aarch64-linux-android
 
+                  sudo apt update
+                  sudo apt install -yq --no-install-suggests --no-install-recommends \
+                    build-essential pkg-config
+
             - name: Build
               run: cargo build --target aarch64-linux-android --release
 
