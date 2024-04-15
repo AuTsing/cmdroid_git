@@ -10,7 +10,6 @@ fn main() {
 
     println!("Cloning {} => {}", url, into);
 
-    unsafe { opts::set_ssl_cert_dir("/system/etc/security/cacerts") }.unwrap();
     Repository::clone(url, into).unwrap();
 
     println!("Clone finished.")
