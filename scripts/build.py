@@ -32,6 +32,4 @@ os.system(f"adb shell mkdir {working_dir}")
 os.system(f"adb shell mkdir {dist_dst_path}")
 os.system(f"adb push {executor_src_path} {executor_dst_path}")
 
-url = "https://github.com/AuTsing/cmdroid_git"
-save_path = f"{working_dir}/remoteRepo"
-os.system(f"adb shell {executor_dst_path} {url} {save_path}")
+os.system(f"adb shell {executor_dst_path}")
